@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,17 +15,23 @@
     <header>
       <nav class="flex justify-between py-7 w-11/12 mx-auto">
         <img src="./Logo.png" class="w-[180px]" alt="" />
-        <input type="text" placeholder="Search" class="input input-bordered" />
-        <button class="btn">Sort</button>
+        <div class="flex gap-5">
+          <input
+            type="text"
+            placeholder="Search"
+            class="input input-bordered"
+          />
+          <button class="btn">Sort</button>
+        </div>
       </nav>
 
       <div
-        class="flex justify-center gap-12 w-11/12"
+        class="flex justify-center gap-12 w-11/12 mx-auto"
         id="button_container"
       ></div>
     </header>
     <div
-      class="w-11/12 grid sm:grid-cols-1 lg:grid-cols-4 mx-auto py-10 gap-10"
+      class="w-11/12 grid sm:grid-cols-2 lg:grid-cols-4 mx-auto py-10 gap-10"
       id="vid_container"
     ></div>
     <script src="./script.js"></script>

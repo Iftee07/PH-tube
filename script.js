@@ -29,7 +29,20 @@ displayVid = (videos) => {
   console.log(videos);
   videos.forEach((element) => {
     let div = document.createElement("div");
-    // div.innerHTML = use card
+    div.innerHTML = `<div class="card card-compact bg-base-100 w-96">
+  <figure>
+    <img
+      src="${element.thumbnail}" class="object-cover h-[250px]" 
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-2xl">${element.title}</h2>
+    <p>${element.authors[0].profile_name}</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-error">See More</button>
+    </div>
+  </div>
+</div>`;
     container.append(div);
   });
 };
