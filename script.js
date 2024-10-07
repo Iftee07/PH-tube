@@ -29,7 +29,7 @@ displayVid = (videos) => {
   console.log(videos);
   videos.forEach((element) => {
     let div = document.createElement("div");
-    div.innerHTML = `<div class="card card-compact bg-base-100 w-96">
+    div.innerHTML = `<div class="card card-compact bg-base-100 w-96 mx-auto">
   <figure>
     <img
       src="${element.thumbnail}" class="object-cover h-[250px]" 
@@ -37,7 +37,17 @@ displayVid = (videos) => {
   </figure>
   <div class="card-body">
     <h2 class="card-title text-2xl">${element.title}</h2>
-    <p>${element.authors[0].profile_name}</p>
+    <div class="flex"><p>${element.authors[0].profile_name} </p> ${
+      element.authors[0].verified
+        ? `<img
+          width="20"
+          height="20"
+          src="https://img.icons8.com/color/48/verified-badge.png"
+          alt="verified-badge"
+        />`
+        : ""
+    }</div>
+    
     <div class="card-actions justify-end">
       <button class="btn btn-error">See More</button>
     </div>
