@@ -9,10 +9,11 @@ loadCat = () => {
 displayCat = (cats) => {
   const container = document.getElementById("button_container");
   for (cat of cats) {
-    const button = document.createElement("button");
-    button.classList = "btn";
-    button.innerHTML = `${cat.category}`;
-    container.append(button);
+    const div = document.createElement("div");
+    div.innerHTML = `
+    <button onclick="loadVidByCat(${cat.category_id})" id = "btn-${cat.category_id}" class="btn buttons">${cat.category}</button>
+    `;
+    container.append(div);
   }
 };
 
@@ -26,7 +27,18 @@ loadVid = () => {
 
 displayVid = (videos) => {
   const container = document.getElementById("vid_container");
-  console.log(videos);
+  container.innerHTML = ``;
+  if (videos.length == 0) {
+    console.log("zero");
+    let sec = document.createElement("div");
+
+    sec.innerHTML = `
+    <h1 class="text-center text-3xl text-red-600">NO INFORMATION AVAILABLE</h1>
+    `;
+    container.append(sec);
+    return;
+  }
+  container.innerHTML = ``;
   videos.forEach((element) => {
     let div = document.createElement("div");
     div.innerHTML = `<div class="card card-compact bg-base-100 w-96 mx-auto">
@@ -55,6 +67,15 @@ displayVid = (videos) => {
 </div>`;
     container.append(div);
   });
+};
+
+loadVidByCat = (catId) => {
+  console.log(catId);
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${catId}`)
+    .then((res) => res.json())
+    .then((data) => {
+      displayVid(data.category);
+    });
 };
 
 loadVid();
